@@ -8,7 +8,7 @@
 
 import React, { Component} from 'react';
 import { connect } from 'react-redux';
-import Form from '../Form.react';
+import RegistrationForm from '../RegistrationForm.react';
 import { sendingRequest, register } from '../../actions/AppActions';
 import LoadingIndicator from '../LoadingIndicator.react';
 
@@ -24,15 +24,15 @@ export default class RegisterPage extends Component {
 					</div>
 					{/* While the form is sending, show the loading indicator,
 						otherwise show "Register" on the submit button */}
-		    	<Form data={formState} dispatch={dispatch} location={location} history={this.props.history} onSubmit={::this._register} btnText={"Register"} currentlySending={currentlySending}/>
+		    	<RegistrationForm data={formState} dispatch={dispatch} location={location} history={this.props.history} onSubmit={::this._register} btnText={"Register"} currentlySending={currentlySending}/>
 				</div>
 			</div>
 		);
   }
 
 	// Register a user
-	_register(username, password) {
-		this.props.dispatch(register(username, password));
+	_register(fullname, username, password, mobilenumber) {
+		this.props.dispatch(register(fullname, username, password, mobilenumber));
 	}
 }
 

@@ -23,6 +23,23 @@ class RegistrationForm extends Component {
           <input
             className="form__field-input"
             type="text"
+            id="fullname"
+            value={this.props.data.fullname}
+            placeholder="frank.underwood"
+            onChange={this._changeFullname.bind(this)}
+            autoCorrect="off"
+            autoCapitalize="off"
+            spellCheck="false"
+          />
+          <label className="form__field-label" htmlFor="fullname">
+            First Name
+          </label>
+        </div>
+
+        <div className="form__field-wrapper">
+          <input
+            className="form__field-input"
+            type="text"
             id="username"
             value={this.props.data.username}
             placeholder="frank.underwood"
@@ -32,7 +49,7 @@ class RegistrationForm extends Component {
             spellCheck="false"
           />
           <label className="form__field-label" htmlFor="username">
-            Username
+            Email
           </label>
         </div>
         <div className="form__field-wrapper">
@@ -48,6 +65,24 @@ class RegistrationForm extends Component {
             Password
           </label>
         </div>
+
+        <div className="form__field-wrapper">
+          <input
+            className="form__field-input"
+            type="text"
+            id="mobilenumber"
+            value={this.props.data.mobilenumber}
+            placeholder="123456789"
+            onChange={this._changeMobileNumber.bind(this)}
+            autoCorrect="off"
+            autoCapitalize="off"
+            spellCheck="false"
+          />
+          <label className="form__field-label" htmlFor="mobilenumber">
+            Mobile Number
+          </label>
+        </div>
+
         <div className="form__submit-btn-wrapper">
           {this.props.currentlySending ? (
             <LoadingButton />
@@ -59,6 +94,15 @@ class RegistrationForm extends Component {
         </div>
       </form>
     );
+  }
+
+  // Change the username in the app state
+  _changeFullname(evt) {
+    var newState = this._mergeWithCurrentState({
+      fullname: evt.target.value
+    });
+
+    this._emitChange(newState);
   }
 
   // Change the username in the app state
@@ -79,6 +123,15 @@ class RegistrationForm extends Component {
     this._emitChange(newState);
   }
 
+  // Change the mobilenumber in the app state
+  _changeMobileNumber(evt) {
+    var newState = this._mergeWithCurrentState({
+      mobilenumber: evt.target.value
+    });
+
+    this._emitChange(newState);
+  }
+
   // Merges the current state with a change
   _mergeWithCurrentState(change) {
     return assign(this.props.data, change);
@@ -92,7 +145,12 @@ class RegistrationForm extends Component {
   // onSubmit call the passed onSubmit function
   _onSubmit(evt) {
     evt.preventDefault();
-    this.props.onSubmit(this.props.data.username, this.props.data.password);
+    this.props.onSubmit(
+      this.props.data.fullname,
+      this.props.data.username,
+      this.props.data.password,
+      this.props.data.mobilenumber
+    );
   }
 }
 
