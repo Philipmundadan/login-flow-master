@@ -32,7 +32,7 @@ class LoginForm extends Component {
             spellCheck="false"
           />
           <label className="form__field-label" htmlFor="username">
-            Username
+            Email
           </label>
         </div>
         <div className="form__field-wrapper">

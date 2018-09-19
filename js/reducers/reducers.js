@@ -10,21 +10,28 @@
  *   });
  */
 
-import { CHANGE_FORM, SET_AUTH, SENDING_REQUEST, SET_ERROR_MESSAGE } from '../constants/AppConstants';
+import {
+  CHANGE_FORM,
+  SET_AUTH,
+  SENDING_REQUEST,
+  SET_ERROR_MESSAGE
+} from "../constants/AppConstants";
 // Object.assign is not yet fully supported in all browsers, so we fallback to
 // a polyfill
-const assign = Object.assign || require('object.assign');
-import auth from '../utils/auth';
+const assign = Object.assign || require("object.assign");
+import auth from "../utils/auth";
 
 // The initial application state
 const initialState = {
   formState: {
-    username: '',
-    password: ''
+    firstname: "",
+    username: "",
+    password: "",
+    mobilenumber: ""
   },
   currentlySending: false,
   loggedIn: auth.loggedIn(),
-  errorMessage: ''
+  errorMessage: ""
 };
 
 // Takes care of changing the application state
