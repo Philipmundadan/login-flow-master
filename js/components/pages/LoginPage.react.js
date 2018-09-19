@@ -8,7 +8,7 @@
 
 import React, { Component} from 'react';
 import { connect } from 'react-redux';
-import Form from '../Form.react';
+import Form from '../LoginForm.react';
 import auth from '../../utils/auth';
 import { login } from '../../actions/AppActions';
 import LoadingIndicator from '../LoadingIndicator.react';
